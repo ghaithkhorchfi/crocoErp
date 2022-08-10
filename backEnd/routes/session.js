@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
         dateOfSession: req.body.dateOfSession,
     });
     SessionObj.save()
-    res.status(200).json({mes : " saved"})
+    res.status(200).json({ mes: " saved" })
 
 });
 
@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
             console.log('error in the  data base', err)
         } else {
             res.status(200).json({
-                session: docs
+                sessions: docs
             });
 
         }
@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
             })
         }
 
-    }) 
+    })
 
 })
 
@@ -66,7 +66,7 @@ router.put('/:id', (req, res) => {
         console.log('after update', result)
         if (result) {
             res.status(200).json({
-                message: obj 
+                message: obj
             })
         }
 
@@ -88,4 +88,4 @@ router.delete('/:id', (req, res) => {
 
     })
 })
-module.exports=router
+module.exports = router

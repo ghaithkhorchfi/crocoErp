@@ -27,5 +27,17 @@ export class UserTableComponent implements OnInit {
     this.router.navigate([`/users/edit/${id}`])
 
   }
+  delete(id:any){
+    this.userService.deleteUser(id).subscribe(data=>{
+      console.log(data);
+      this.userService.getAllUsers().subscribe(data=>{
+        console.log(data);
+        this.usersDataSource=data.Users
+        
+      })
+
+      
+    })
+  }
 
 }

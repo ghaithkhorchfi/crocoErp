@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
 
 })
 
-router.put('/:id', auth, (req, res) => {
+router.put('/:id', (req, res) => {
     console.log('here into edit user', req.params.id);
     console.log('here into edit user', req.body);
 
@@ -76,7 +76,7 @@ router.put('/:id', auth, (req, res) => {
 
 }) // edit 
 
-router.delete('/:id', auth, (req, res) => {
+router.delete('/:id', (req, res) => {
     console.log('here delete')
     console.log('here id', req.params.id)
     User.deleteOne({ _id: req.params.id }).then((result) => {

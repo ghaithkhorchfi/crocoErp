@@ -78,6 +78,9 @@ export const appRoutes: Route[] = [
             {path:'traineeships',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin/traineeships/traineeships.module').then(m=>m.TraineeshipsModule)}
             ]},
+            {path:'sessions',children:[
+                {path:'',loadChildren:()=>import('app/modules/admin/session/session.module').then(m=>m.SessionModule)}
+            ]},
             {path:'users',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin//users/users.module').then(m=>m.UsersModule)}
             ]},

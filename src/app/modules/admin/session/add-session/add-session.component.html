@@ -1,0 +1,60 @@
+<div class="flex flex-col flex-auto items-center sm:justify-center min-w-0">
+    <div
+        class="w-full sm:w-auto py-8 px-4 sm:p-12 sm:rounded-2xl sm:shadow sm:bg-card"
+    >
+        <div class="w-full max-w-80 sm:w-80 mx-auto sm:mx-0">
+            <!-- Logo -->
+            <div class="w-40">
+                <img src="assets/images/logo/crococoder.png" />
+            </div>
+
+            <!-- Title -->
+            <div
+                class="mt-8 text-4xl font-extrabold tracking-tight leading-tight"
+            >
+                {{ title }}
+            </div>
+
+            <!-- Sign Up form -->
+            <form class="mt-8" #addForm="ngForm">
+                <!-- Name field -->
+                <mat-form-field class="w-full">
+                    <mat-label>Session Name</mat-label>
+                    <input
+                        name="nameSession"
+                        matInput
+                        [(ngModel)]="session.nameSession"
+                    />
+                </mat-form-field>
+                <mat-form-field class="w-full">
+                    <mat-label>Duration</mat-label>
+                    <input
+                        name="duration"
+                        matInput
+                        [(ngModel)]="session.duration"
+                    />
+                </mat-form-field>
+
+                <!-- Email field -->
+                <mat-form-field class="w-full">
+                    <mat-label>Date Of Session</mat-label>
+                    <input
+                        name="dateOfSession"
+                        matInput
+                        [(ngModel)]="session.dateOfSession"
+                    />
+                </mat-form-field>
+
+                <!-- Submit button -->
+                <button
+                    class="fuse-mat-button-large w-full mt-6"
+                    mat-flat-button
+                    [color]="'primary'"
+                    (click)="add()"
+                >
+                    {{ title }}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

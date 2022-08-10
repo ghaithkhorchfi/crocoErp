@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../service/user.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class EditUserComponent implements OnInit {
   user:any={};
   id:any
 
-  constructor(private _formBuilder:FormBuilder,private userService:UserService,private activatedRoute:ActivatedRoute) { }
+  constructor(private _formBuilder:FormBuilder,private userService:UserService,private activatedRoute:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.editForm = this._formBuilder.group({
@@ -42,6 +42,11 @@ if(this.id){
   }
   edit(){
     console.log(this.user);
+    this.userService.editUser(this.user).subscribe(data=>{
+      console.log(data);
+      this.router.navigate(['users/users'])
+      
+    })
     
   }
 
