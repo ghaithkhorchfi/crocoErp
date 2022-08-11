@@ -3,7 +3,6 @@ import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
-import { TraineeshipComponent } from './component/traineeship/traineeship.component';
 
 // @formatter:off
 /* eslint-disable max-len */
@@ -78,11 +77,17 @@ export const appRoutes: Route[] = [
             {path:'traineeships',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin/traineeships/traineeships.module').then(m=>m.TraineeshipsModule)}
             ]},
+            {path:'rooms',children:[
+                {path:'',loadChildren:()=>import('app/modules/admin/rooms/rooms.module').then(m=>m.roomsModule)}
+            ]},
             {path:'sessions',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin/session/session.module').then(m=>m.SessionModule)}
             ]},
             {path:'users',children:[
-                {path:'',loadChildren:()=>import('app/modules/admin//users/users.module').then(m=>m.UsersModule)}
+                {path:'',loadChildren:()=>import('app/modules/admin/users/users.module').then(m=>m.UsersModule)}
+            ]},
+            {path:'payment',children:[
+                {path:'',loadChildren:()=>import('app/modules/admin/payment/payment.module').then(m=>m.PaymentModule)}
             ]},
             // Dashboards
             {path: 'dashboards', children: [

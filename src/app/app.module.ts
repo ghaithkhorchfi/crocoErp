@@ -24,6 +24,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersModule } from './modules/admin/users/users.module';
+import { PaymentModule } from './modules/admin/payment/payment.module';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -62,7 +63,7 @@ const routerConfig: ExtraOptions = {
         MatSortModule,
         MatTableModule,
         NgApexchartsModule,
-        SharedModule,HttpClientModule, UsersModule
+        SharedModule,HttpClientModule, UsersModule, PaymentModule
     ],
     bootstrap   : [
         AppComponent

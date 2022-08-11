@@ -8,14 +8,14 @@ router.post('/', (req, res) => {
     console.log('here into add payments', req.body);
     // add object to db
     const paymentObj = new Payment({
-       amount : req.body.amount,
-       typeOfPayment : req.body.typeOfPayment,
-       _idTraineeship: req.body._idTraineeship,
-       _idStudent:req.body._idStudent,
+        amount: req.body.amount,
+        typeOfPayment: req.body.typeOfPayment,
+        _idTraineeship: req.body._idTraineeship,
+        _idStudent: req.body._idStudent,
 
     });
     paymentObj.save()
-    res.status(200).json({mes : " saved"})
+    res.status(200).json({ mes: " saved" })
 });
 
 router.get('/', (req, res) => {
@@ -56,17 +56,17 @@ router.put('/:id', (req, res) => {
 
     const obj = new Payment({
         _id: req.body._id,
-        amount : req.body.amount,
-        typeOfPayment : req.body.typeOfPayment,
+        amount: req.body.amount,
+        typeOfPayment: req.body.typeOfPayment,
         _idTraineeship: req.body._idTraineeship,
-        _idStudent:req.body._idStudent,
+        _idStudent: req.body._idStudent,
 
     })
     Payment.updateOne({ _id: req.params.id }, obj).then((result) => {
         console.log('after update', result)
         if (result) {
             res.status(200).json({
-                message: obj 
+                message: obj
             })
         }
 
@@ -89,4 +89,32 @@ router.delete('/:id', (req, res) => {
 
     })
 })
-module.exports=router
+router.get('/find/allPayment', (req, res) => {
+    Payment.aggregate(
+        [
+            {
+                $lookup: {
+                    from: "users", // collection to join
+                    localField: "_idStudent", //field from the input documents
+                    foreignField: "_id", //field from the documents of the "from" collection
+                    as: "students", // output array field
+                }
+            },
+            {
+                $lookup: {
+                    from: "traineeships", // collection to join
+                    localField: "_idTraineeship", //field from the input documents
+                    foreignField: "_id", //field from the documents of the "from" collection
+                    as: "traineeships", // output array field
+                },
+            }
+        ],
+        (error, docs) => {
+            res.status(200).json({
+                payments: docs,
+            });
+        }
+    )
+
+})
+module.exports = router

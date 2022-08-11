@@ -4,6 +4,10 @@
         <div
             class="xl:col-span-2 flex flex-col flex-auto bg-card shadow rounded-2xl overflow-hidden"
         >
+            <div class="w-20">
+                <img src="assets/images/logo/crococoder.png" />
+            </div>
+
             <div class="p-6">
                 <div
                     class="mr-4 text-lg font-medium tracking-tight leading-6 truncate"
@@ -21,7 +25,7 @@
                     <!--  ID -->
                     <ng-container matColumnDef="_id">
                         <th mat-header-cell mat-sort-header *matHeaderCellDef>
-                            Traineeship ID
+                            ID
                         </th>
                         <td mat-cell *matCellDef="let i = index">
                             <span
@@ -46,6 +50,7 @@
                         </td>
                     </ng-container>
 
+                    <!-- type -->
                     <ng-container matColumnDef="traineeship">
                         <th mat-header-cell mat-sort-header *matHeaderCellDef>
                             Type
@@ -60,7 +65,7 @@
                     <!-- price -->
                     <ng-container matColumnDef="price">
                         <th mat-header-cell mat-sort-header *matHeaderCellDef>
-                            Price
+                            Price(DT)
                         </th>
                         <td mat-cell *matCellDef="let traineeship">
                             {{ traineeship.price }}
@@ -74,7 +79,7 @@
                         </th>
                         <td mat-cell *matCellDef="let traineeship">
                             <span class="pr-6 whitespace-nowrap">
-                                {{ traineeship.startDate | date: "MMM dd, y" }}
+                                {{ traineeship.startDate }}
                             </span>
                         </td>
                     </ng-container>
@@ -86,7 +91,7 @@
                         </th>
                         <td mat-cell *matCellDef="let traineeship">
                             <span class="pr-6 whitespace-nowrap">
-                                {{ traineeship.finalDate | date: "MMM dd, y" }}
+                                {{ traineeship.finalDate }}
                             </span>
                         </td>
                     </ng-container>
@@ -111,23 +116,23 @@
                         </td>
                     </ng-container>
 
-                    <!-- buttons -->
-
                     <ng-container matColumnDef="actions">
                         <th mat-header-cell mat-sort-header *matHeaderCellDef>
-                            actions
+                            Action
                         </th>
                         <td mat-cell *matCellDef="let traineeship">
                             <button
-                                mat-button
-                                color="accent"
+                                mat-flat-button
+                                color="primary"
+                                class="m-1"
                                 (click)="Edit(traineeship._id)"
                             >
-                                Edit
+                                edit
                             </button>
                             <button
-                                mat-button
+                                mat-flat-button
                                 color="warn"
+                                class="m-1"
                                 (click)="Delete(traineeship._id)"
                             >
                                 Delete

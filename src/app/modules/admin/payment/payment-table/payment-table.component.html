@@ -10,7 +10,7 @@
                 <div
                     class="mr-4 text-lg font-medium tracking-tight leading-6 truncate"
                 >
-                    sessions table
+                    Payment table
                 </div>
             </div>
             <div class="overflow-x-auto mx-6">
@@ -18,42 +18,57 @@
                     class="w-full bg-transparent"
                     mat-table
                     matSort
-                    [dataSource]="sessionsDataSource"
+                    [dataSource]="paymentsDataSource"
                 >
                     <!-- Transaction ID -->
-                    <ng-container matColumnDef="nameSession">
+                    <ng-container matColumnDef="amount">
                         <th mat-header-cell mat-sort-header *matHeaderCellDef>
-                            Session Name
+                            Payment Amount
                         </th>
-                        <td mat-cell *matCellDef="let session">
+                        <td mat-cell *matCellDef="let payment">
                             <span
                                 class="pr-6 font-medium text-sm text-secondary whitespace-nowrap"
                             >
-                                {{ session.nameSession }}
+                                {{ payment.amount }}
                             </span>
                         </td>
                     </ng-container>
 
                     <!-- Date -->
-                    <ng-container matColumnDef="duration">
+                    <ng-container matColumnDef="type Of Payment">
                         <th mat-header-cell mat-sort-header *matHeaderCellDef>
-                            Duration
+                            Type
                         </th>
-                        <td mat-cell *matCellDef="let session">
+                        <td mat-cell *matCellDef="let payment">
                             <span class="pr-6 whitespace-nowrap">
-                                {{ session.duration }}
+                                {{ payment.typeOfPayment }}
                             </span>
                         </td>
                     </ng-container>
 
-                    <!-- Name -->
-                    <ng-container matColumnDef="dateOfSession">
+                    <ng-container matColumnDef="student Name">
                         <th mat-header-cell mat-sort-header *matHeaderCellDef>
-                            date Of Session
+                            Student Name
                         </th>
-                        <td mat-cell *matCellDef="let session">
-                            <span class="pr-6 whitespace-nowrap">
-                                {{ session.dateOfSession }}
+                        <td mat-cell *matCellDef="let payment">
+                            <span
+                                class="pr-6 whitespace-nowrap"
+                                *ngFor="let student of payment.students"
+                            >
+                                {{ student.firstName }} {{ student.lastName }}
+                            </span>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="traineeship Name">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            Traineeship Name
+                        </th>
+                        <td mat-cell *matCellDef="let payment">
+                            <span
+                                class="pr-6 whitespace-nowrap"
+                                *ngFor="let traineeship of payment.traineeships"
+                            >
+                                {{ traineeship.nameOfTraineeship }}
                             </span>
                         </td>
                     </ng-container>
@@ -61,12 +76,12 @@
                         <th mat-header-cell mat-sort-header *matHeaderCellDef>
                             Action
                         </th>
-                        <td mat-cell *matCellDef="let session">
+                        <td mat-cell *matCellDef="let payment">
                             <button
                                 mat-flat-button
                                 color="primary"
                                 class="m-1"
-                                (click)="edit(session._id)"
+                                (click)="edit(payment._id)"
                             >
                                 edit
                             </button>
@@ -74,7 +89,7 @@
                                 mat-flat-button
                                 color="warn"
                                 class="m-1"
-                                (click)="delete(session._id)"
+                                (click)="delete(payment._id)"
                             >
                                 Delete
                             </button>
@@ -83,12 +98,12 @@
 
                     <tr
                         mat-header-row
-                        *matHeaderRowDef="sessionsTableColumns"
+                        *matHeaderRowDef="paymentsTableColumns"
                     ></tr>
                     <tr
                         class="order-row h-16"
                         mat-row
-                        *matRowDef="let row; columns: sessionsTableColumns"
+                        *matRowDef="let row; columns: paymentsTableColumns"
                     ></tr>
                 </table>
             </div>
