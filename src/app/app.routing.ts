@@ -86,7 +86,7 @@ export const appRoutes: Route[] = [
             {path:'users',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin/users/users.module').then(m=>m.UsersModule)}
             ]},
-            {path:'payment',children:[
+            {path:'payments',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin/payment/payment.module').then(m=>m.PaymentModule)}
             ]},
             // Dashboards

@@ -15,7 +15,7 @@ export class PaymentService {
     return this.httpClient.get<{payments:any}>(`${this.paymentUrl}/find/allPayment`)
   }
   getPaymentById(id:any){
-    return this.httpClient.get(`${this.paymentUrl}/${id}`)
+    return this.httpClient.get<{payment:any}>(`${this.paymentUrl}/${id}`)
   }
   updatePayment(payment:any){
     return this.httpClient.put(`${this.paymentUrl}/${payment._id}`,payment)

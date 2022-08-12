@@ -4,7 +4,7 @@ const paymentSchema = mongoose.Schema({
     typeOfPayment:
     {
         type: String,
-        enum: ['Cash', 'Check ']
+        enum: ['Cash', 'Check']
     },
     _idTraineeship:
 
