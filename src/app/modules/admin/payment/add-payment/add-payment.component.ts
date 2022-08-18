@@ -41,8 +41,7 @@ title:string='Add Payment'
     if(this.id){
       this.paymentService.getPaymentById(this.id).subscribe(data=>{
         console.log(data);
-        this.payment=data.payment
-        
+        this.payment=data.payment        
       })
       this.title='Edit Payment'
     }

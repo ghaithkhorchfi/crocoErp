@@ -8,11 +8,12 @@ router.post('/', (req, res) => {
     console.log('here into add Files', req.body);
     // add object to db
     const fileObj = new File({
-        details:req.body.details,
-    _idStudent:req.body._idStudent
+        details: req.body.details,
+        _idStudent: req.body._idStudent,
+        _idPayment: req.body._idPayment,
     });
     fileObj.save()
-    res.status(200).json({mes : " saved"})
+    res.status(200).json({ mes: " saved" })
 });
 
 router.get('/', (req, res) => {
@@ -53,14 +54,14 @@ router.put('/:id', (req, res) => {
 
     const obj = new File({
         _id: req.body._id,
-        details:req.body.details,
-        _idStudent:req.body._idStudent
+        details: req.body.details,
+        _idStudent: req.body._idStudent
     })
     File.updateOne({ _id: req.params.id }, obj).then((result) => {
         console.log('after update', result)
         if (result) {
             res.status(200).json({
-                message: obj 
+                message: obj
             })
         }
 
@@ -83,4 +84,4 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-module.exports=router
+module.exports = router

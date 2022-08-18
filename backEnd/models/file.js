@@ -3,11 +3,14 @@ const mongoose = require('mongoose')
 const fileSchema = mongoose.Schema({
     details: String,
     _idStudent:
-     {
+    {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    },
+    _idPayment: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Payment'
     }
-
 
 });
 

@@ -89,6 +89,9 @@ export const appRoutes: Route[] = [
             {path:'payments',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin/payment/payment.module').then(m=>m.PaymentModule)}
             ]},
+            {path:'presences',children:[
+                {path:'',loadChildren:()=>import('app/modules/admin/presence/presence.module').then(m=>m.PresenceModule)}
+            ]},
             // Dashboards
             {path: 'dashboards', children: [
                 {path: 'project', loadChildren: () => import('app/modules/admin/dashboards/project/project.module').then(m => m.ProjectModule)},

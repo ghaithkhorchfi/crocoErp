@@ -98,8 +98,10 @@ router.get('/find/allPayment', (req, res) => {
                     localField: "_idStudent", //field from the input documents
                     foreignField: "_id", //field from the documents of the "from" collection
                     as: "students", // output array field
-                }
+                },
+
             },
+
             {
                 $lookup: {
                     from: "traineeships", // collection to join
@@ -107,7 +109,17 @@ router.get('/find/allPayment', (req, res) => {
                     foreignField: "_id", //field from the documents of the "from" collection
                     as: "traineeships", // output array field
                 },
-            }
+            },
+            {
+                $project: {
+                    'students.firstName': 1,
+                    'students.lastName': 1,
+                    'traineeships.nameOfTraineeship': 1,
+                    'amount': 1,
+                    'typeOfPayment': 1
+
+                }
+            },
         ],
         (error, docs) => {
             res.status(200).json({
